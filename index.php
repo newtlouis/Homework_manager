@@ -1,6 +1,6 @@
 <?php
 
-require('model/datablase.php');
+require('model/database.php');
 require('model/domain.php');
 require('model/task.php');
 

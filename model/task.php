@@ -1,6 +1,6 @@
 <?php 
 
-function get_task_by_domain(int $domain_id){
+function get_task_by_domain($domain_id){
     global $db;
 
     if($domain_id){
@@ -11,7 +11,9 @@ function get_task_by_domain(int $domain_id){
     }
 
     $statement = $db->prepare($query);
-    $statement->bindValue(':domain_id', $domain_id);
+    if($domain_id){
+        $statement->bindValue(':domain_id', $domain_id);
+    }    
     $statement->execute();
     $tasks = $statement->fetchAll();
     $statement->closeCursor();
@@ -19,7 +21,7 @@ function get_task_by_domain(int $domain_id){
     return $tasks;
 }
 
-function delete_task(int $task_id){
+function delete_task($task_id){
     global $db;
     $query = 'DELETE  FROM task WHERE id = :task_id';    
     $statement = $db->prepare($query);
@@ -29,7 +31,7 @@ function delete_task(int $task_id){
 
 }
 
-function add_task(int $domain_id, string $description){
+function add_task($domain_id,$description){
     global $db;
     $query = 'INSERT INTO task (description, domain_id) VALUE (:description, :domain_id)';    
     $statement = $db->prepare($query);
