@@ -10,11 +10,11 @@
                 <?php foreach ($domains as $domain) : ?>
                     <?php if ($domain_id == $domain['id']) : ?>
                         <option value="<?= $domain['id'] ?>" selected>
-                    <?php else : ?>
+                        <?php else : ?>
                         <option value="<?= $domain['id'] ?>">
-                    <?php endif ?>                       
-                    <?= $domain['name'] ?> </option>
-                        
+                        <?php endif ?>
+                        <?= $domain['name'] ?> </option>
+
                     <?php endforeach ?>
             </select>
             <button type="submit">Filtrer</button>
@@ -25,8 +25,8 @@
         <?php foreach ($tasks as $task) : ?>
             <div class="row">
                 <div class="item">
-                    <p class="name"> <?php $task['name'] ?> </p>
-                    <p class="description"> <?php $task['description'] ?> </p>
+                    <p class="name"> <?= $task['name'] ?> </p>
+                    <p class="description"> <?= $task['description'] ?> </p>
                 </div>
                 <div class="delete">
                     <form action="." method="post">
@@ -56,13 +56,13 @@
             <label for="domain_id">Matière</label>
             <select name="domain_id" required>
                 <option value="">Choissisez une matière</option>
-                <?php foreach($domains as $domain): ?>
+                <?php foreach ($domains as $domain) : ?>
                     <option value=" <?= $domain['id'] ?> "> <?= $domain['name'] ?> </option>
                 <?php endforeach ?>
             </select>
 
-            <label for="descritpion">Contenu du devoir</label>
-            <input type="text" name="description" maxlength="120" placeholder="Faire l'exercice numéro ..." required>
+            <label for="task_descritpion">Contenu du devoir</label>
+            <input type="text" name="task_description" maxlength="120" placeholder="Faire l'exercice numéro ..." required>
         </div>
         <button class="add__button">Ajouter</button>
     </form>

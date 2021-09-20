@@ -2,16 +2,16 @@
 
 <h1>Liste des matières</h1>
 
-<?php if($domain): ?>
+<?php if ($domains) : ?>
     <section>
-        <?php foreach($domains as $domain) : ?>
+        <?php foreach ($domains as $domain) : ?>
             <div class="row">
                 <div class="item">
                     <p class="domain__name"> <?= $domain['name'] ?> </p>
                 </div>
                 <div class="delete">
                     <form action="." method="post">
-                        <input type="hidden" name="action" id="delete_domain">
+                        <input type="hidden" name="action" value="delete_domain">
                         <input type="hidden" name="domain_id" value=" <?= $domain['id'] ?> ">
                         <button class="delete__button">X</button>
                     </form>
@@ -19,7 +19,7 @@
             </div>
         <?php endforeach ?>
     </section>
-<?php else: ?>
+<?php else : ?>
     <p>Aucune matière enregistrée.</p>
 <?php endif ?>
 
@@ -39,4 +39,3 @@
 <p><a href=".">Voir ou ajouter des devoirs</a></p>
 
 <?php include('view/footer.php') ?>
-

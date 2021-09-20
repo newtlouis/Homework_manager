@@ -16,7 +16,7 @@ function get_domain_name($domain_id){
         return "Toutes les matières";
     }
     global $db;
-    $query = 'SELECT name FROM domain WHERE id = :$domain_id';
+    $query = 'SELECT name FROM domain WHERE id = :domain_id';
     $statement = $db->prepare($query);
     $statement->bindValue(':domain_id', $domain_id);
     $statement->execute();
@@ -28,7 +28,7 @@ function get_domain_name($domain_id){
 
 function delete_domain($domain_id){
     global $db;
-    $query = 'DELETE FROM domain WHERE id = :$domain_id';
+    $query = 'DELETE FROM domain WHERE id = :domain_id';
     $statement = $db->prepare($query);
     $statement->bindValue(':domain_id', $domain_id);
     $statement->execute();
