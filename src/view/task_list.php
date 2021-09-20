@@ -1,4 +1,4 @@
-<?php include('view/header.php') ?>
+<?php include('src/view/header.php') ?>
 
 <section>
     <header>
@@ -70,4 +70,4 @@
 
 <p><a href=".?action=list_domain">Modifier les matières</a></p>
 
-<?php include('view/footer.php') ?>
+<?php include('src/view/footer.php') ?>

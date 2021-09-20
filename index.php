@@ -1,8 +1,14 @@
 <?php
 
-require('model/database.php');
-require('model/domain.php');
-require('model/task.php');
+use App\Model\Domain;
+use App\Model\Task;
+
+require_once realpath("vendor/autoload.php");
+
+
+
+require('src/model/database.php');
+
 
 
 $task_id = filter_input(INPUT_POST, 'task_id', FILTER_VALIDATE_INT);
@@ -22,25 +28,28 @@ if (!$action) {
     }
 }
 
+$domain = new Domain();
+$task = new Task();
+
 switch ($action) {
+
     case "list_domain":
-        $domains = get_domains();
-        include('view/domain_list.php');
+        $domains = $domain->get_domains();
+        include('src/view/domain_list.php');
         break;
 
     case "add_domain":
-        add_domain($domain_name);
+        $domain->add_domain($domain_name);
         header("Location: .?action=list_domain");
         break;
 
     case "add_task":
-        var_dump($task_description);
         if ($domain_id && $task_description) {
-            add_task($domain_id, $task_description);
+            $task->add_task($domain_id, $task_description);
             header("Location: .?domain_id=$domain_id");
         } else {
             $error = "Les données du devoirs sont incorrectes. Veuillez recommencer svp";
-            include('view/error.php');
+            include('src/view/error.php');
             exit();
         }
         break;
@@ -48,10 +57,10 @@ switch ($action) {
     case "delete_domain":
         if ($domain_id) {
             try {
-                delete_domain($domain_id);
+                $domain->delete_domain($domain_id);
             } catch (PDOException $e) {
                 $error = "Vous ne pouvez pas supprimer une matière s'il y a des devoirs associés: " . $e->getMessage();
-                include('view/error.php');
+                include('src/view/error.php');
                 exit();
             }
             header("Location: .?action=list_domain");
@@ -60,17 +69,17 @@ switch ($action) {
 
     case "delete_task":
         if ($task_id) {
-            delete_task($task_id);
+            $task->delete_task($task_id);
             header("Location: .?domain_id=$domain_id");
         } else {
             $error = "id du devoir incorrect ou absent";
-            include('view/error.php');
+            include('src/view/error.php');
         }
         break;
 
     default:
-        $domain_name = get_domain_name($domain_id);
-        $domains = get_domains();
-        $tasks = get_task_by_domain($domain_id);
-        include('view/task_list.php');
+        $domain_name = $domain->get_domain_name($domain_id);
+        $domains = $domain->get_domains();
+        $tasks = $task->get_task_by_domain($domain_id);
+        include('src/view/task_list.php');
 }

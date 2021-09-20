@@ -1,4 +1,6 @@
-<?php include('view/header.php') ?>
+<?php 
+include('src/view/header.php') 
+?>
 
 <h1>Liste des matières</h1>
 
@@ -38,4 +40,4 @@
 
 <p><a href=".">Voir ou ajouter des devoirs</a></p>
 
-<?php include('view/footer.php') ?>
+<?php include('src/view/footer.php') ?>
