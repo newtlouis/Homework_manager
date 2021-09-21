@@ -1,5 +1,5 @@
-<?php 
-include('src/view/header.php') 
+<?php
+include('src/view/header.php')
 ?>
 
 <h1>Liste des matières</h1>

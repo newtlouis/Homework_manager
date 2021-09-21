@@ -52,7 +52,7 @@
 
     <form action="." method="post">
         <input type="hidden" name="action" value="add_task">
-        <div class="add__imput">
+        <div class="add__input">
             <label for="domain_id">Matière</label>
             <select name="domain_id" required>
                 <option value="">Choissisez une matière</option>
