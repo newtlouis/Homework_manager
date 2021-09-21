@@ -1,0 +1,13 @@
+button{
+    color: $primary__color;
+    padding: 5px;
+    border-radius: 3px;
+    margin: 10px 0;
+    border: 1px solid $primary__color;
+    transition: all 0.2s ease-in-out;
+    &:hover{
+        font-weight: bolder;
+
+
+    }
+}

@@ -68,6 +68,6 @@
     </form>
 </section>
 
-<p><a href=".?action=list_domain">Modifier les matières</a></p>
+<p><a href=".?action=list_domain">Gérer les matières</a></p>
 
 <?php include('src/view/footer.php') ?>
