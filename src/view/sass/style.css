@@ -80,6 +80,10 @@ body {
   width: 200px;
 }
 
+.date {
+  width: 110px;
+}
+
 .delete {
   width: 10%;
   text-align: right;

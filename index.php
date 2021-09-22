@@ -11,9 +11,14 @@ require('src/model/database.php');
 
 
 
+
 $task_id = filter_input(INPUT_POST, 'task_id', FILTER_VALIDATE_INT);
 $task_description = filter_input(INPUT_POST, 'task_description', FILTER_SANITIZE_STRING);
 $domain_name = filter_input(INPUT_POST, 'domain_name', FILTER_SANITIZE_STRING);
+
+if(isset($_POST['date_task'])){
+    $date_task = $_POST['date_task'];
+}
 
 $domain_id = filter_input(INPUT_POST, 'domain_id', FILTER_VALIDATE_INT);
 if (!$domain_id) {
@@ -45,8 +50,8 @@ switch ($action) {
 
     case "add_task":
         if ($domain_id && $task_description) {
-            $task->add_task($domain_id, $task_description);
-            header("Location: .?domain_id=$domain_id");
+            $task->add_task($domain_id, $task_description, $date_task);
+            header("Location: .");
         } else {
             $error = "Les données du devoirs sont incorrectes. Veuillez recommencer svp";
             include('src/view/error.php');

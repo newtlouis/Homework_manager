@@ -25,6 +25,7 @@
         <?php foreach ($tasks as $task) : ?>
             <div class="row">
                 <div class="item">
+                    <p class="date"> <?= $task['date_task'] ?> </p>
                     <p class="name"> <?= $task['name'] ?> </p>
                     <p class="description"> <?= $task['description'] ?> </p>
                 </div>
@@ -63,6 +64,9 @@
 
             <label for="task_descritpion">Contenu du devoir</label>
             <input type="text" name="task_description" maxlength="120" placeholder="Faire l'exercice numéro ..." required>
+
+            <label for="date_task">Date:</label>
+            <input type="date" id="start" name="date_task" min="2021-01-01" max="2030-12-31">
         </div>
         <button class="add__button">Ajouter</button>
     </form>
